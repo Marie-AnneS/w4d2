@@ -1,5 +1,8 @@
 const pg = require("pg");
 const settings = require("./settings"); // settings.json
+const config    = require('./knexfile');
+const env       = 'development';
+const knex      = require('knex')(config[env]);
 
 const client = new pg.Client({
   user: settings.user,
@@ -25,7 +28,7 @@ const getArguments = () => {
 const displayPerson = (personObj, i) => {
     var bornDate = new Date(personObj.birthdate)
   console.log(
-    `- ${i++} : ${personObj.first_name} ${personObj.last_name} born ${bornDate.getFullYear()}-${bornDate.getMonth()}-${bornDate.getDate()}`
+    `- ${i++} : ${personObj.first_name} ${personObj.last_name} born ${bornDate.getFullYear()}-${bornDate.getMonth().length == 1 ? bornDate.getMonth() : '0'+bornDate.getMonth() }-${bornDate.getDate().length == 1 ? bornDate.getDate() : '0'+bornDate.getDate() }`
   );
 };
 
