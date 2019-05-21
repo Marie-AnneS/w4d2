@@ -19,31 +19,8 @@ client.connect(err => {
 // Get the arguments from the command line
 const getArguments = () => {
   const [node, path, searchName] = process.argv;
-  //console.log(searchName);
   return searchName;
 };
-/* ARRAY de DB
-const searchPerson = (searchName) => {
-    // Create the insert query to add to the database
-    const query = {
-      text: "SELECT * FROM famous_people;"
-    };
-  
-    client
-      .query(query)
-      .then(res =>
-        console.log(res.rows)
-      )
-      .catch(err => console.log(err))
-      .finally(() => {
-        console.log("query completed");
-        client.end();
-      });
-  }; */
-
-/* Searching ...
-Found 2 person(s) by the name 'Paul':
-- 1: Paul Rudd, born '1969-04-06' */
 
 const displayPerson = (personObj, i) => {
     var bornDate = new Date(personObj.birthdate)
